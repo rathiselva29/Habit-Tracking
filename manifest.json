@@ -1,9 +1,12 @@
 {
+  "id": "/Habit-Tracking/",
   "name": "Habit Tracker",
   "short_name": "Habits",
+  "description": "HabitFlow is a Progressive Web App for tracking daily habits, building consistency, and improving wellness with offline support and reminders.",
   "start_url": "./login.html",
   "scope": "./",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#ffffff",
   "theme_color": "#4CAF50",
   "icons": [
@@ -21,6 +24,18 @@
       "src": "assets/icons/water.svg",
       "sizes": "any",
       "type": "image/svg+xml"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/illustrations/train img.png",
+      "sizes": "1200x800",
+      "type": "image/png"
+    },
+    {
+      "src": "image/train img.png",
+      "sizes": "1200x800",
+      "type": "image/png"
     }
   ]
 }
