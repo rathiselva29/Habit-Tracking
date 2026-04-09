@@ -1,10 +1,8 @@
 // app.js - Main application logic
-document.addEventListener('DOMContentLoaded', function() {
-  // Navigation
+document.addEventListener('DOMContentLoaded', async function() {
   initNavigation();
-  
-  // Authentication check
   const currentPage = window.location.pathname.split('/').pop().replace('.html', '') || 'index';
+
   if (currentPage !== 'login' && localStorage.getItem('userLoggedIn') !== 'true') {
     window.location.href = 'login.html';
     return;
@@ -15,18 +13,19 @@ document.addEventListener('DOMContentLoaded', function() {
     return;
   }
 
-  // Load user data
-  loadUserData();
-  
-  // Initialize current page
-  initPage(currentPage);
-
-  // Register service worker for PWA support
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service-worker.js').catch(error => {
+    try {
+      await navigator.serviceWorker.register('service-worker.js');
+    } catch (error) {
       console.warn('Service worker registration failed:', error);
-    });
+    }
   }
+
+  await registerPeriodicSync();
+  await requestNotificationPermission();
+
+  loadUserData();
+  initPage(currentPage);
 });
 
 function initNavigation() {
@@ -120,9 +119,55 @@ function initLoginPage() {
       
       if (email && password) {
         localStorage.setItem('userLoggedIn', 'true');
+        showNotification('Welcome back!', 'Your HabitFlow session is ready.');
         navigateTo('index');
       }
     });
+  }
+}
+
+async function requestNotificationPermission() {
+  if (!('Notification' in window) || !('serviceWorker' in navigator)) return;
+
+  if (Notification.permission === 'default') {
+    try {
+      const permission = await Notification.requestPermission();
+      if (permission === 'granted') {
+        showNotification('HabitFlow Notifications Enabled', 'You will receive reminders and offline updates.');
+      }
+    } catch (error) {
+      console.warn('Notification permission failed:', error);
+    }
+  } else if (Notification.permission === 'granted') {
+    showNotification('HabitFlow Ready', 'Your habit tracker is set up for notifications.');
+  }
+}
+
+async function showNotification(title, body) {
+  if (!('serviceWorker' in navigator)) return;
+  const registration = await navigator.serviceWorker.getRegistration();
+  if (!registration) return;
+
+  registration.showNotification(title, {
+    body,
+    icon: 'assets/icons/default.svg',
+    badge: 'img_192.png'
+  });
+}
+
+async function registerPeriodicSync() {
+  if (!('serviceWorker' in navigator) || !('periodicSync' in navigator.serviceWorker)) return;
+
+  const registration = await navigator.serviceWorker.ready;
+  try {
+    const status = await navigator.permissions.query({ name: 'periodic-background-sync' });
+    if (status.state === 'granted') {
+      await registration.periodicSync.register('habit-sync', {
+        minInterval: 24 * 60 * 60 * 1000
+      });
+    }
+  } catch (error) {
+    console.warn('Periodic Sync is not available:', error);
   }
 }
 
