@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — HabitFlow</title>
+  <meta name="description" content="Login to HabitFlow to continue tracking your habits, earning badges, and viewing progress analytics.">
+  <link rel="icon" href="assets/icons/default.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#4CAF50">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <img src="assets/icons/default.svg" alt="HabitFlow logo" class="nav-logo">
+        HabitFlow
+      </div>
+      <button id="mobile-menu-toggle" class="mobile-menu-toggle">☰</button>
+      <ul class="nav-links">
+        <li><a href="#" class="nav-link" data-page="index">Home</a></li>
+        <li><a href="#" class="nav-link" data-page="habit-categories">Habit Categories</a></li>
+        <li><a href="#" class="nav-link" data-page="daily-tracker">Daily Tracker</a></li>
+        <li><a href="#" class="nav-link" data-page="progress">Progress</a></li>
+        <li><a href="#" class="nav-link" data-page="customize">Customize Habits</a></li>
+      </ul>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu hidden">
+      <ul class="mobile-nav-links">
+        <li><a href="#" class="nav-link" data-page="index">Home</a></li>
+        <li><a href="#" class="nav-link" data-page="habit-categories">Habit Categories</a></li>
+        <li><a href="#" class="nav-link" data-page="daily-tracker">Daily Tracker</a></li>
+        <li><a href="#" class="nav-link" data-page="progress">Progress</a></li>
+        <li><a href="#" class="nav-link" data-page="customize">Customize Habits</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="login-container">
+      <div class="login-card">
+        <h1 class="login-title">Daily Habit Tracking</h1>
+        <p class="login-subtitle">Track your daily habits and improve your life</p>
+        
+        <form id="login-form">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" required>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Floating Shapes -->
+  <div class="floating-shapes">
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Check if user is already logged in
+    if (localStorage.getItem('userLoggedIn') === 'true') {
+      window.location.href = 'index.html';
+    }
+  </script>
+  <script src="habits-data.js"></script>
+  <script src="confetti.js"></script>
+  <script src="chatbot.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customize Habits — HabitFlow</title>
+  <meta name="description" content="Create and manage your custom habits with HabitFlow. Add, edit, and remove habits that match your goals.">
+  <link rel="icon" href="assets/icons/default.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <img src="assets/icons/default.svg" alt="HabitFlow logo" class="nav-logo">
+        HabitFlow
+      </div>
+      <button id="mobile-menu-toggle" class="mobile-menu-toggle">☰</button>
+      <ul class="nav-links">
+        <li><a href="#" class="nav-link" data-page="index">Home</a></li>
+        <li><a href="#" class="nav-link" data-page="habit-categories">Habit Categories</a></li>
+        <li><a href="#" class="nav-link" data-page="daily-tracker">Daily Tracker</a></li>
+        <li><a href="#" class="nav-link" data-page="progress">Progress</a></li>
+        <li><a href="#" class="nav-link" data-page="customize">Customize Habits</a></li>
+      </ul>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu hidden">
+      <ul class="mobile-nav-links">
+        <li><a href="#" class="nav-link" data-page="index">Home</a></li>
+        <li><a href="#" class="nav-link" data-page="habit-categories">Habit Categories</a></li>
+        <li><a href="#" class="nav-link" data-page="daily-tracker">Daily Tracker</a></li>
+        <li><a href="#" class="nav-link" data-page="progress">Progress</a></li>
+        <li><a href="#" class="nav-link" data-page="customize">Customize Habits</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      <h1 style="text-align: center; margin-bottom: 2rem; font-size: 2.5rem; color: var(--primary-purple);">Customize Your Habits</h1>
+      
+      <!-- Add Custom Habit -->
+      <div class="customize-section">
+        <h2>Add Custom Habit</h2>
+        <form id="add-custom-habit-form" class="add-custom-form">
+          <div class="form-group">
+            <label for="custom-habit-name">Habit Name</label>
+            <input type="text" id="custom-habit-name" placeholder="e.g., Read for 30 minutes" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="custom-habit-description">Description (Optional)</label>
+            <textarea id="custom-habit-description" placeholder="Describe your habit..." rows="3"></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Add Habit</button>
+        </form>
+      </div>
+      
+      <!-- Your Habits -->
+      <div class="customize-section">
+        <h2>Your Habits</h2>
+        <div id="user-habits-container">
+          <!-- User habits will be loaded here -->
+        </div>
+      </div>
+      
+      <!-- Suggested Habits -->
+      <div class="customize-section">
+        <h2>Suggested Premium Habits</h2>
+        <div id="suggested-habits-container">
+          <!-- Suggested habits will be loaded here -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Floating Shapes -->
+  <div class="floating-shapes">
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="habits-data.js"></script>
+  <script src="confetti.js"></script>
+  <script src="chatbot.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progress — HabitFlow</title>
+  <meta name="description" content="View your habit progress, charts, streaks, and achievements with HabitFlow.">
+  <link rel="icon" href="assets/icons/default.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <img src="assets/icons/default.svg" alt="HabitFlow logo" class="nav-logo">
+        HabitFlow
+      </div>
+      <button id="mobile-menu-toggle" class="mobile-menu-toggle">☰</button>
+      <ul class="nav-links">
+        <li><a href="#" class="nav-link" data-page="index">Home</a></li>
+        <li><a href="#" class="nav-link" data-page="habit-categories">Habit Categories</a></li>
+        <li><a href="#" class="nav-link" data-page="daily-tracker">Daily Tracker</a></li>
+        <li><a href="#" class="nav-link" data-page="progress">Progress</a></li>
+        <li><a href="#" class="nav-link" data-page="customize">Customize Habits</a></li>
+      </ul>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu hidden">
+      <ul class="mobile-nav-links">
+        <li><a href="#" class="nav-link" data-page="index">Home</a></li>
+        <li><a href="#" class="nav-link" data-page="habit-categories">Habit Categories</a></li>
+        <li><a href="#" class="nav-link" data-page="daily-tracker">Daily Tracker</a></li>
+        <li><a href="#" class="nav-link" data-page="progress">Progress</a></li>
+        <li><a href="#" class="nav-link" data-page="customize">Customize Habits</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      <h1 style="text-align: center; margin-bottom: 2rem; font-size: 2.5rem; color: var(--primary-purple);">Your Progress</h1>
+      
+      <!-- Stats -->
+      <div id="progress-stats" class="progress-stats">
+        <!-- Stats will be loaded here -->
+      </div>
+      
+      <!-- Charts -->
+      <div style="max-width: 800px; margin: 3rem auto;">
+        <div class="glassmorphism" style="padding: 2rem; margin-bottom: 2rem;">
+          <h2 style="text-align: center; margin-bottom: 1rem;">Weekly Progress</h2>
+          <canvas id="weeklyChart"></canvas>
+        </div>
+        
+        <div class="glassmorphism" style="padding: 2rem;">
+          <h2 style="text-align: center; margin-bottom: 1rem;">Monthly Overview</h2>
+          <canvas id="monthlyChart"></canvas>
+        </div>
+      </div>
+      
+      <!-- Badges -->
+      <h2 style="text-align: center; margin: 3rem 0 2rem; font-size: 2rem; color: var(--primary-purple);">Achievements</h2>
+      <div id="badges-container" class="badges-container">
+        <!-- Badges will be loaded here -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Floating Shapes -->
+  <div class="floating-shapes">
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="habits-data.js"></script>
+  <script src="confetti.js"></script>
+  <script src="chatbot.js"></script>
+  <script src="app.js"></script>
+  <script>
+    // Initialize charts
+    document.addEventListener('DOMContentLoaded', function() {
+      // Weekly chart
+      const weeklyCtx = document.getElementById('weeklyChart').getContext('2d');
+      new Chart(weeklyCtx, {
+        type: 'line',
+        data: {
+          labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          datasets: [{
+            label: 'Habits Completed',
+            data: [3, 4, 2, 5, 3, 4, 5], // This would be dynamic
+            borderColor: '#8b5cf6',
+            backgroundColor: 'rgba(139, 92, 246, 0.1)',
+            tension: 0.4
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              display: false
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+      // Monthly chart
+      const monthlyCtx = document.getElementById('monthlyChart').getContext('2d');
+      new Chart(monthlyCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+          datasets: [{
+            label: 'Average Daily Completions',
+            data: [3.5, 4.2, 3.8, 4.5], // This would be dynamic
+            backgroundColor: '#10b981',
+            borderRadius: 8
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              display: false
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

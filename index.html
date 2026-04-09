@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HabitFlow — Perfect Habit Tracker</title>
+  <meta name="description" content="HabitFlow is a modern habit tracking web app with gamification, analytics, and a built-in AI coach. Build streaks, earn badges, and track progress effortlessly.">
+  <link rel="icon" href="assets/icons/default.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#4CAF50">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <img src="assets/icons/default.svg" alt="HabitFlow logo" class="nav-logo">
+        HabitFlow
+      </div>
+      <button id="mobile-menu-toggle" class="mobile-menu-toggle">☰</button>
+      <ul class="nav-links">
+        <li><a href="#" class="nav-link" data-page="index">Home</a></li>
+        <li><a href="#" class="nav-link" data-page="habit-categories">Habit Categories</a></li>
+        <li><a href="#" class="nav-link" data-page="daily-tracker">Daily Tracker</a></li>
+        <li><a href="#" class="nav-link" data-page="progress">Progress</a></li>
+        <li><a href="#" class="nav-link" data-page="customize">Customize Habits</a></li>
+      </ul>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu hidden">
+      <ul class="mobile-nav-links">
+        <li><a href="#" class="nav-link" data-page="index">Home</a></li>
+        <li><a href="#" class="nav-link" data-page="habit-categories">Habit Categories</a></li>
+        <li><a href="#" class="nav-link" data-page="daily-tracker">Daily Tracker</a></li>
+        <li><a href="#" class="nav-link" data-page="progress">Progress</a></li>
+        <li><a href="#" class="nav-link" data-page="customize">Customize Habits</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      <!-- Hero Section -->
+      <section class="hero">
+        <h1>Small daily habits create big life changes.</h1>
+        <div class="hero-logos">
+          <img src="assets/icons/default.svg" alt="HabitFlow logo" class="hero-logo">
+          <img src="assets/icons/water.svg" alt="Water icon" class="hero-logo">
+        </div>
+        <p>Transform your life with consistent, meaningful habits. Track your progress, stay motivated, and build a better you.</p>
+        <button id="start-tracking-btn" class="btn btn-primary">Start Tracking</button>
+        <div class="hero-illustration">
+          <img src="assets/illustrations/train img.png" alt="Wellness illustration" style="width: 100%; height: auto;">
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Floating Shapes -->
+  <div class="floating-shapes">
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Check if user is logged in
+    if (localStorage.getItem('userLoggedIn') !== 'true') {
+      window.location.href = 'login.html';
+    }
+  </script>
+  <script src="habits-data.js"></script>
+  <script src="confetti.js"></script>
+  <script src="chatbot.js"></script>
+  <script src="app.js"></script>
+  <script>
+  if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
+}
+</script>
+</body>
+</html>

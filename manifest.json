@@ -1,0 +1,21 @@
+{
+  "name": "Habit Tracker",
+  "short_name": "Habits",
+  "start_url": "./login.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4CAF50",
+  "icons": [
+    {
+      "src": "assets/icons/default.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "assets/icons/water.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Tracker — HabitFlow</title>
+  <meta name="description" content="Track and complete your daily habits with HabitFlow. Build streaks, earn badges, and stay motivated.">
+  <link rel="icon" href="assets/icons/default.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <img src="assets/icons/default.svg" alt="HabitFlow logo" class="nav-logo">
+        HabitFlow
+      </div>
+      <button id="mobile-menu-toggle" class="mobile-menu-toggle">☰</button>
+      <ul class="nav-links">
+        <li><a href="#" class="nav-link" data-page="index">Home</a></li>
+        <li><a href="#" class="nav-link" data-page="habit-categories">Habit Categories</a></li>
+        <li><a href="#" class="nav-link" data-page="daily-tracker">Daily Tracker</a></li>
+        <li><a href="#" class="nav-link" data-page="progress">Progress</a></li>
+        <li><a href="#" class="nav-link" data-page="customize">Customize Habits</a></li>
+      </ul>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu hidden">
+      <ul class="mobile-nav-links">
+        <li><a href="#" class="nav-link" data-page="index">Home</a></li>
+        <li><a href="#" class="nav-link" data-page="habit-categories">Habit Categories</a></li>
+        <li><a href="#" class="nav-link" data-page="daily-tracker">Daily Tracker</a></li>
+        <li><a href="#" class="nav-link" data-page="progress">Progress</a></li>
+        <li><a href="#" class="nav-link" data-page="customize">Customize Habits</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      <div class="streak-display">
+        <h2>🔥 Current Streak: <span id="current-streak">0</span> days</h2>
+        <p>Keep it up! Every day counts.</p>
+      </div>
+      
+      <h1 style="text-align: center; margin-bottom: 2rem; font-size: 2.5rem; color: var(--primary-purple);">Today's Habits</h1>
+      
+      <div id="daily-habits-container">
+        <!-- Daily habits will be loaded here -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Floating Shapes -->
+  <div class="floating-shapes">
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="habits-data.js"></script>
+  <script src="confetti.js"></script>
+  <script src="chatbot.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
