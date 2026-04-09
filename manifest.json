@@ -16,6 +16,11 @@
       "type": "image/png"
     },
     {
+      "src": "image/train img.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
       "src": "assets/icons/default.svg",
       "sizes": "any",
       "type": "image/svg+xml"

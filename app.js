@@ -150,7 +150,7 @@ async function showNotification(title, body) {
 
   registration.showNotification(title, {
     body,
-    icon: 'assets/icons/default.svg',
+    icon: 'image/train img.png',
     badge: 'img_192.png'
   });
 }

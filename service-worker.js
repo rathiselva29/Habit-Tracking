@@ -16,6 +16,7 @@ const ASSETS_TO_CACHE = [
   './style.css',
   './manifest.json',
   './img_192.png',
+  './image/train img.png',
   './assets/icons/default.svg',
   './assets/icons/water.svg',
   './assets/icons/custom.svg',
