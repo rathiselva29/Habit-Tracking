@@ -9,6 +9,115 @@
   "orientation": "portrait",
   "background_color": "#ffffff",
   "theme_color": "#4CAF50",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["productivity", "lifestyle", "health"],
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "scope_extensions": [
+    {
+      "origin": "https://habit-tracker.example.com"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Daily Tracker",
+      "short_name": "Daily",
+      "description": "Track your daily habits",
+      "url": "./daily-tracker.html",
+      "icons": [
+        {
+          "src": "assets/icons/default.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Progress View",
+      "short_name": "Progress",
+      "description": "View your habit progress",
+      "url": "./progress.html",
+      "icons": [
+        {
+          "src": "assets/icons/default.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Habit Categories",
+      "short_name": "Categories",
+      "description": "Manage habit categories",
+      "url": "./habit-categories.html",
+      "icons": [
+        {
+          "src": "assets/icons/default.svg",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "file_handlers": [
+    {
+      "action": "./import-habits.html",
+      "accept": {
+        "application/json": [".json"],
+        "text/csv": [".csv"]
+      }
+    }
+  ],
+  "launch_handler": {
+    "client_mode": "focus-existing"
+  },
+  "protocol_handlers": [
+    {
+      "protocol": "web+habits",
+      "url": "./protocol-handler.html?url=%s"
+    }
+  ],
+  "prefer_related_applications": false,
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.habittracker.app",
+      "id": "com.habittracker.app"
+    },
+    {
+      "platform": "itunes",
+      "url": "https://apps.apple.com/app/habit-tracker/id123456789"
+    }
+  ],
+  "share_target": {
+    "action": "./share-target.html",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": [
+        {
+          "name": "files",
+          "accept": ["image/*", ".pdf"]
+        }
+      ]
+    }
+  },
+  "iarc_rating_id": "e84ad081-f713-4284-8bc5-bb63172b5b5a",
+  "widgets": [
+    {
+      "name": "Habit Widget",
+      "description": "Quick habit tracking widget",
+      "tag": "habit-widget",
+      "template": "habit-widget.html",
+      "data": "./widget-data.json"
+    }
+  ],
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "note_taking": {
+    "new_note_url": "./new-note.html"
+  },
   "icons": [
     {
       "src": "img_192.png",
