@@ -1,55 +1,110 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login — HabitFlow</title>
-  <meta name="description" content="Login to HabitFlow to continue tracking your habits and routines.">
-  <link rel="icon" href="image/train img.png" type="image/png">
-  <link rel="stylesheet" href="style.css">
-  <meta name="theme-color" content="#4F46E5">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sign in — HabitFlow</title>
+  <meta name="description" content="Sign in to HabitFlow — passwordless, secure, and fast." />
+  <link rel="icon" href="image/train img.png" type="image/png" />
+  <link rel="stylesheet" href="style.css" />
+  <meta name="theme-color" content="#4F46E5" />
+  <style>
+    /* Mobile-first auth screen styling */
+    html,body{height:100%;margin:0}
+    body.page-login{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#071124 0%, #052238 60%, #042437 100%);font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:#EAF4FF}
+
+    .auth-card{width:94%;max-width:520px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border-radius:20px;padding:1.25rem;border:1px solid rgba(255,255,255,0.04);box-shadow:0 30px 80px rgba(2,6,23,0.7);backdrop-filter:blur(10px)}
+
+    .auth-header{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1rem}
+    .eyebrow{display:inline-block;color:var(--muted);background:rgba(255,255,255,0.02);padding:.4rem .8rem;border-radius:999px;font-weight:800}
+    h1{margin:.25rem 0;font-size:clamp(1.4rem,5vw,2rem);line-height:1.02}
+    .lead{color:rgba(234,244,255,0.9);margin:0 0 .6rem}
+
+    .auth-form{display:flex;flex-direction:column;gap:.85rem}
+    .form-floating input{width:100%;padding:1rem;border-radius:14px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:inherit}
+    .form-floating label{left:1rem;top:.95rem}
+
+    .auth-actions{display:flex;gap:.6rem;flex-direction:column}
+
+    .social-row{display:flex;gap:.6rem;flex-direction:column}
+    .social-btn{display:flex;align-items:center;gap:.75rem;justify-content:center;padding:.9rem;border-radius:12px;border:1px solid rgba(255,255,255,0.06);background:linear-gradient(90deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));cursor:pointer}
+    .social-google{background:linear-gradient(90deg,#fff 0%, rgba(255,255,255,0.02) 100%);color:#0F172A}
+    .social-apple{background:linear-gradient(90deg,#000,#111);color:#fff}
+
+    .terms{font-size:.9rem;color:rgba(234,244,255,0.78);display:flex;gap:.4rem;align-items:center}
+    .terms a{color:var(--primary);text-decoration:underline}
+
+    .otp-row{display:flex;gap:.6rem;align-items:center}
+    .hidden{display:none !important}
+
+    .anim-entrance{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.9,.3,1)}
+    .anim-entrance.active{opacity:1;transform:translateY(0)}
+
+    @media(min-width:900px){body.page-login{background:linear-gradient(180deg,#07132a 0%, #06283a 40%, #03202e 100%)}.auth-card{padding:2rem}}
+  </style>
 </head>
 <body class="page-login">
-  <main class="onboarding-shell">
-    <section class="auth-card">
+  <main style="width:100%;display:flex;align-items:center;justify-content:center;padding:1rem;">
+    <section class="auth-card anim-entrance" id="authCard">
       <div class="auth-header">
         <div>
           <p class="eyebrow">Welcome back</p>
           <h1>Sign in to HabitFlow</h1>
-          <p>One-step passwordless access to your habits, streaks, and daily motivation.</p>
+          <p class="lead">Access streaks, smart reminders, and premium habit coaching.</p>
         </div>
       </div>
 
       <form id="login-form" class="auth-form">
         <div class="form-floating">
-          <input type="email" id="email" placeholder="" required>
+          <input type="text" id="full-name" placeholder="" autocomplete="name">
+          <label for="full-name">Full name</label>
+        </div>
+        <div class="form-floating">
+          <input type="email" id="email" placeholder="" required autocomplete="email">
           <label for="email">Email address</label>
         </div>
-        <div class="checkbox-group">
+
+        <div class="terms">
           <input type="checkbox" id="terms-checkbox">
-          <label for="terms-checkbox">I agree to receive sign-in links and reminders.</label>
+          <label for="terms-checkbox">I agree to the <a href="#">Terms</a> and <a href="#">Privacy</a>.</label>
         </div>
+
         <div id="otp-section" class="hidden">
-          <p id="otp-sent-message" class="form-note">Enter the code from your email.</p>
+          <p id="otp-sent-message" class="form-note">Enter the code sent to your email.</p>
           <div class="form-floating">
             <input type="text" id="otp-code" placeholder="" inputmode="numeric" maxlength="6">
             <label for="otp-code">One-time code</label>
           </div>
           <div class="auth-actions">
-            <button type="button" id="verify-otp-btn" class="btn btn-primary">Verify code</button>
-            <button type="button" id="resend-otp-btn" class="btn btn-ghost">Resend code</button>
+            <div style="display:flex;gap:.6rem;">
+              <button type="button" id="verify-otp-btn" class="btn btn-primary" style="flex:1">Verify code</button>
+              <button type="button" id="resend-otp-btn" class="btn btn-ghost" style="flex:1">Resend</button>
+            </div>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary">Send code</button>
-        <button type="button" id="google-signin" class="btn btn-secondary" style="width: 100%;">Continue with Google</button>
+
+        <div class="auth-actions">
+          <button type="submit" class="btn btn-primary" style="padding:.95rem;border-radius:12px;font-weight:800">Continue</button>
+        </div>
+
+        <div style="height:8px"></div>
+
+        <div class="social-row">
+          <button type="button" id="google-signin" class="social-btn social-google">▶ Continue with Google</button>
+          <button type="button" id="apple-signin" class="social-btn social-apple"> Continue with Apple</button>
+        </div>
       </form>
 
-      <div class="auth-copy" style="margin-top: 1.5rem;">
-        <p>Don’t have an account yet? Sign in to access premium habit coaching, streak reports, and smart reminders.</p>
+      <div style="margin-top:1rem;text-align:center;color:rgba(234,244,255,0.8)">
+        <p style="margin:0">Don’t have an account? Continue with email or sign in with a provider.</p>
       </div>
     </section>
   </main>
 
   <script src="app.js"></script>
+  <script>
+    // entrance animation
+    document.addEventListener('DOMContentLoaded', ()=> setTimeout(()=> document.getElementById('authCard')?.classList.add('active'), 80));
+  </script>
 </body>
 </html>

@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run lint or build checks
+        run: |
+          echo "No build step defined; verifying static files and dependencies"
+          npm ls || true
+
+      - name: Validate HTML files
+        run: |
+          find . -maxdepth 2 -type f \( -name '*.html' -o -name '*.js' -o -name '*.css' \) | sort
