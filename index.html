@@ -1,86 +1,113 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HabitFlow — Perfect Habit Tracker</title>
-  <meta name="description" content="HabitFlow is a modern habit tracking web app with gamification, analytics, and a built-in AI coach. Build streaks, earn badges, and track progress effortlessly.">
+  <title>HabitFlow — Premium Habit Tracker</title>
+  <meta name="description" content="HabitFlow helps you build better routines with beautiful analytics, streaks, and habit tracking.">
   <link rel="icon" href="image/train img.png" type="image/png">
   <link rel="stylesheet" href="style.css">
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#4CAF50">
+  <meta name="theme-color" content="#4F46E5">
 </head>
-<body>
-  <!-- Navigation -->
+<body class="page-home">
   <nav class="navbar">
     <div class="nav-container">
-      <div class="nav-brand">
+      <a href="index.html" class="nav-brand">
         <img src="image/train img.png" alt="HabitFlow logo" class="nav-logo">
         HabitFlow
-      </div>
+      </a>
       <button id="mobile-menu-toggle" class="mobile-menu-toggle">☰</button>
       <ul class="nav-links">
-        <li><a href="#" class="nav-link" data-page="index">Home</a></li>
-        <li><a href="#" class="nav-link" data-page="habit-categories">Habit Categories</a></li>
-        <li><a href="#" class="nav-link" data-page="daily-tracker">Daily Tracker</a></li>
+        <li><a href="#" class="nav-link active" data-page="index">Home</a></li>
+        <li><a href="#" class="nav-link" data-page="habit-categories">Habits</a></li>
         <li><a href="#" class="nav-link" data-page="progress">Progress</a></li>
-        <li><a href="#" class="nav-link" data-page="customize">Customize Habits</a></li>
+        <li><a href="#" class="nav-link" data-page="customize">Customize</a></li>
       </ul>
     </div>
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="mobile-menu hidden">
+    <div id="mobile-menu" class="mobile-menu">
       <ul class="mobile-nav-links">
-        <li><a href="#" class="nav-link" data-page="index">Home</a></li>
-        <li><a href="#" class="nav-link" data-page="habit-categories">Habit Categories</a></li>
-        <li><a href="#" class="nav-link" data-page="daily-tracker">Daily Tracker</a></li>
+        <li><a href="#" class="nav-link active" data-page="index">Home</a></li>
+        <li><a href="#" class="nav-link" data-page="habit-categories">Habits</a></li>
         <li><a href="#" class="nav-link" data-page="progress">Progress</a></li>
-        <li><a href="#" class="nav-link" data-page="customize">Customize Habits</a></li>
+        <li><a href="#" class="nav-link" data-page="customize">Customize</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- Main Content -->
-  <main class="main-content">
-    <div class="container">
-      <!-- Hero Section -->
-      <section class="hero">
-        <h1>Small daily habits create big life changes.</h1>
-        <div class="hero-logos">
-          <img src="assets/icons/default.svg" alt="HabitFlow logo" class="hero-logo">
-          <img src="assets/icons/water.svg" alt="Water icon" class="hero-logo">
+  <main class="page-shell">
+    <section class="hero">
+      <div class="hero-copy anim-fade-up delay-1">
+        <div class="eyebrow">Premium Wellness</div>
+        <h1>Build habits that grow with you.</h1>
+        <p>Track your daily rituals, celebrate streaks, and keep your motivation high with HabitFlow's premium experience.</p>
+        <div class="hero-actions">
+          <button id="start-tracking-btn" class="btn btn-primary">Start Tracking</button>
+          <button class="btn btn-secondary">Explore Features</button>
         </div>
-        <p>Transform your life with consistent, meaningful habits. Track your progress, stay motivated, and build a better you.</p>
-        <button id="start-tracking-btn" class="btn btn-primary">Start Tracking</button>
-        <div class="hero-illustration">
-          <img src="assets/illustrations/train img.png" alt="Wellness illustration" style="width: 100%; height: auto;">
+      </div>
+      <div class="hero-visual anim-fade-up delay-2">
+        <div class="icon-bubbles">
+          <div class="icon-bubble">💧</div>
+          <div class="icon-bubble">🏃</div>
+          <div class="icon-bubble">📚</div>
+          <div class="icon-bubble">🧘</div>
         </div>
-      </section>
-    </div>
+        <img src="assets/illustrations/train img.png" alt="Premium habit tracking illustration">
+      </div>
+    </section>
+
+    <section class="stats-grid anim-fade-up delay-3">
+      <article class="stat-card">
+        <h3>Streak</h3>
+        <div class="stat-number" data-target="18">18</div>
+        <div class="stat-highlight">Days in a row</div>
+      </article>
+      <article class="stat-card">
+        <h3>Weekly Score</h3>
+        <div class="stat-number" data-target="92">92</div>
+        <div class="stat-highlight">Consistency index</div>
+      </article>
+      <article class="stat-card">
+        <h3>Active Habits</h3>
+        <div class="stat-number" data-target="12">12</div>
+        <div class="stat-highlight">Personal habits</div>
+      </article>
+      <article class="stat-card">
+        <h3>Achievements</h3>
+        <div class="stat-number" data-target="7">7</div>
+        <div class="stat-highlight">Badges earned</div>
+      </article>
+    </section>
+
+    <section class="habits-grid anim-fade-up delay-3">
+      <article class="habit-card">
+        <div class="habit-icon"><img src="assets/icons/water.svg" alt="Hydration"></div>
+        <h3>Daily Hydration</h3>
+        <p>Track your water intake and stay refreshed with a simple daily goal.</p>
+        <div class="habit-pill">Self-care</div>
+      </article>
+      <article class="habit-card">
+        <div class="habit-icon"><img src="assets/icons/fitness.svg" alt="Fitness"></div>
+        <h3>Move Every Day</h3>
+        <p>Stay active with short workouts and movement reminders that fit your schedule.</p>
+        <div class="habit-pill">Fitness</div>
+      </article>
+      <article class="habit-card">
+        <div class="habit-icon"><img src="assets/icons/reading.svg" alt="Reading"></div>
+        <h3>Reading Ritual</h3>
+        <p>Create a consistent reading habit with small, daily steps and streak tracking.</p>
+        <div class="habit-pill">Learning</div>
+      </article>
+      <article class="habit-card">
+        <div class="habit-icon"><img src="assets/icons/meditation.svg" alt="Meditation"></div>
+        <h3>Mindful Minutes</h3>
+        <p>Build a calming meditation routine to reduce stress and improve focus.</p>
+        <div class="habit-pill">Wellness</div>
+      </article>
+    </section>
   </main>
 
-  <!-- Floating Shapes -->
-  <div class="floating-shapes">
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-  </div>
-
-  <!-- Scripts -->
-  <script>
-    // Check if user is logged in
-    if (localStorage.getItem('userLoggedIn') !== 'true') {
-      window.location.href = 'login.html';
-    }
-  </script>
   <script src="habits-data.js"></script>
-  <script src="confetti.js"></script>
-  <script src="chatbot.js"></script>
   <script src="app.js"></script>
-  <script>
-  if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("service-worker.js");
-}
-</script>
 </body>
 </html>

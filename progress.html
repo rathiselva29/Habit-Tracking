@@ -1,146 +1,150 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Progress — HabitFlow</title>
-  <meta name="description" content="View your habit progress, charts, streaks, and achievements with HabitFlow.">
-  <link rel="icon" href="assets/icons/default.svg" type="image/svg+xml">
+  <meta name="description" content="View weekly progress, streaks, and achievement analytics in HabitFlow.">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
-  <!-- Navigation -->
+<body class="page-progress">
   <nav class="navbar">
     <div class="nav-container">
-      <div class="nav-brand">
+      <a href="index.html" class="nav-brand">
         <img src="image/train img.png" alt="HabitFlow logo" class="nav-logo">
         HabitFlow
-      </div>
+      </a>
       <button id="mobile-menu-toggle" class="mobile-menu-toggle">☰</button>
       <ul class="nav-links">
         <li><a href="#" class="nav-link" data-page="index">Home</a></li>
-        <li><a href="#" class="nav-link" data-page="habit-categories">Habit Categories</a></li>
-        <li><a href="#" class="nav-link" data-page="daily-tracker">Daily Tracker</a></li>
-        <li><a href="#" class="nav-link" data-page="progress">Progress</a></li>
-        <li><a href="#" class="nav-link" data-page="customize">Customize Habits</a></li>
+        <li><a href="#" class="nav-link" data-page="habit-categories">Habits</a></li>
+        <li><a href="#" class="nav-link active" data-page="progress">Progress</a></li>
+        <li><a href="#" class="nav-link" data-page="customize">Customize</a></li>
       </ul>
     </div>
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="mobile-menu hidden">
+    <div id="mobile-menu" class="mobile-menu">
       <ul class="mobile-nav-links">
         <li><a href="#" class="nav-link" data-page="index">Home</a></li>
-        <li><a href="#" class="nav-link" data-page="habit-categories">Habit Categories</a></li>
-        <li><a href="#" class="nav-link" data-page="daily-tracker">Daily Tracker</a></li>
-        <li><a href="#" class="nav-link" data-page="progress">Progress</a></li>
-        <li><a href="#" class="nav-link" data-page="customize">Customize Habits</a></li>
+        <li><a href="#" class="nav-link" data-page="habit-categories">Habits</a></li>
+        <li><a href="#" class="nav-link active" data-page="progress">Progress</a></li>
+        <li><a href="#" class="nav-link" data-page="customize">Customize</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- Main Content -->
-  <main class="main-content">
-    <div class="container">
-      <h1 style="text-align: center; margin-bottom: 2rem; font-size: 2.5rem; color: var(--primary-purple);">Your Progress</h1>
-      
-      <!-- Stats -->
-      <div id="progress-stats" class="progress-stats">
-        <!-- Stats will be loaded here -->
-      </div>
-      
-      <!-- Charts -->
-      <div style="max-width: 800px; margin: 3rem auto;">
-        <div class="glassmorphism" style="padding: 2rem; margin-bottom: 2rem;">
-          <h2 style="text-align: center; margin-bottom: 1rem;">Weekly Progress</h2>
-          <canvas id="weeklyChart"></canvas>
+  <main class="page-shell">
+    <section class="progress-panel anim-fade-up delay-1">
+      <div class="progress-summary">
+        <h2>Your Progress Dashboard</h2>
+        <p>See how habits stack up over the week and track momentum with premium analytics.</p>
+        <div class="stats-grid">
+          <article class="stat-card">
+            <h3>Current Streak</h3>
+            <div id="progress-streak" class="stat-number">18</div>
+            <div class="stat-highlight">Days of momentum</div>
+          </article>
+          <article class="stat-card">
+            <h3>Completed Today</h3>
+            <div id="progress-completed" class="stat-number">0</div>
+            <div class="stat-highlight">Habits finished</div>
+          </article>
+          <article class="stat-card">
+            <h3>Daily Score</h3>
+            <div id="progress-score" class="stat-number">0%</div>
+            <div class="stat-highlight">Completion percentage</div>
+          </article>
+          <article class="stat-card">
+            <h3>Badges</h3>
+            <div id="progress-badges" class="stat-number">0</div>
+            <div class="stat-highlight">Milestones reached</div>
+          </article>
         </div>
-        
-        <div class="glassmorphism" style="padding: 2rem;">
-          <h2 style="text-align: center; margin-bottom: 1rem;">Monthly Overview</h2>
-          <canvas id="monthlyChart"></canvas>
-        </div>
       </div>
-      
-      <!-- Badges -->
-      <h2 style="text-align: center; margin: 3rem 0 2rem; font-size: 2rem; color: var(--primary-purple);">Achievements</h2>
-      <div id="badges-container" class="badges-container">
-        <!-- Badges will be loaded here -->
+      <div class="chart-card anim-fade-up delay-2">
+        <h3>Weekly Completion</h3>
+        <canvas id="weeklyChart"></canvas>
       </div>
-    </div>
+    </section>
+
+    <section class="chart-card anim-fade-up delay-3">
+      <h3>Monthly Overview</h3>
+      <div class="progress-bar"><span data-value="82"></span></div>
+      <canvas id="monthlyChart"></canvas>
+    </section>
+
+    <section class="badges-grid anim-fade-up delay-3">
+      <article class="badge-card">
+        <div class="badge-icon">🏆</div>
+        <h4>Streak Champion</h4>
+        <p>Keep your streak going with consistent progress and daily wins.</p>
+      </article>
+      <article class="badge-card">
+        <div class="badge-icon">🎯</div>
+        <h4>Goal Setter</h4>
+        <p>Complete more than 85% of your goals each week.</p>
+      </article>
+      <article class="badge-card">
+        <div class="badge-icon">🔥</div>
+        <h4>Consistency King</h4>
+        <p>Maintain routines and build lasting habits that stick.</p>
+      </article>
+    </section>
   </main>
 
-  <!-- Floating Shapes -->
-  <div class="floating-shapes">
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-  </div>
-
-  <!-- Scripts -->
   <script src="habits-data.js"></script>
-  <script src="confetti.js"></script>
-  <script src="chatbot.js"></script>
   <script src="app.js"></script>
   <script>
-    // Initialize charts
     document.addEventListener('DOMContentLoaded', function() {
-      // Weekly chart
-      const weeklyCtx = document.getElementById('weeklyChart').getContext('2d');
-      new Chart(weeklyCtx, {
-        type: 'line',
-        data: {
-          labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-          datasets: [{
-            label: 'Habits Completed',
-            data: [3, 4, 2, 5, 3, 4, 5], // This would be dynamic
-            borderColor: '#8b5cf6',
-            backgroundColor: 'rgba(139, 92, 246, 0.1)',
-            tension: 0.4
-          }]
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            legend: {
-              display: false
-            }
+      const weeklyCtx = document.getElementById('weeklyChart')?.getContext('2d');
+      if (weeklyCtx) {
+        new Chart(weeklyCtx, {
+          type: 'line',
+          data: {
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            datasets: [{
+              label: 'Completed habits',
+              data: [4, 5, 6, 5, 7, 6, 8],
+              borderColor: '#4F46E5',
+              backgroundColor: 'rgba(79, 70, 229, 0.12)',
+              tension: 0.4,
+              fill: true,
+              pointRadius: 4,
+            }]
           },
-          scales: {
-            y: {
-              beginAtZero: true
+          options: {
+            responsive: true,
+            plugins: { legend: { display: false } },
+            scales: {
+              y: { beginAtZero: true, grid: { color: 'rgba(15, 23, 42, 0.08)' } },
+              x: { grid: { color: 'transparent' } }
             }
           }
-        }
-      });
-
-      // Monthly chart
-      const monthlyCtx = document.getElementById('monthlyChart').getContext('2d');
-      new Chart(monthlyCtx, {
-        type: 'bar',
-        data: {
-          labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
-          datasets: [{
-            label: 'Average Daily Completions',
-            data: [3.5, 4.2, 3.8, 4.5], // This would be dynamic
-            backgroundColor: '#10b981',
-            borderRadius: 8
-          }]
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            legend: {
-              display: false
-            }
+        });
+      }
+      const monthlyCtx = document.getElementById('monthlyChart')?.getContext('2d');
+      if (monthlyCtx) {
+        new Chart(monthlyCtx, {
+          type: 'bar',
+          data: {
+            labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+            datasets: [{
+              label: 'Weekly efficiency',
+              data: [78, 82, 88, 92],
+              backgroundColor: '#22C55E',
+              borderRadius: 12,
+            }]
           },
-          scales: {
-            y: {
-              beginAtZero: true
+          options: {
+            responsive: true,
+            plugins: { legend: { display: false } },
+            scales: {
+              y: { beginAtZero: true, grid: { color: 'rgba(15, 23, 42, 0.08)' } },
+              x: { grid: { color: 'transparent' } }
             }
           }
-        }
-      });
+        });
+      }
     });
   </script>
 </body>

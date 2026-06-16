@@ -1,5 +1,5 @@
 // habits-data.js
-const habitsData = {
+const habitsData = window.habitsData = {
   basic: [
     {
       id: 'drink-water',

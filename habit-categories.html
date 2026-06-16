@@ -1,65 +1,51 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Habit Categories — HabitFlow</title>
-  <meta name="description" content="Browse curated habit categories, add new habits, and build a daily routine using HabitFlow.">
-  <link rel="icon" href="image/train img.png" type="image/png">
+  <meta name="description" content="Choose from curated habit categories to build your personalized routine.">
   <link rel="stylesheet" href="style.css">
+  <meta name="theme-color" content="#4F46E5">
 </head>
-<body>
-  <!-- Navigation -->
+<body class="page-categories">
   <nav class="navbar">
     <div class="nav-container">
-      <div class="nav-brand">
+      <a href="index.html" class="nav-brand">
         <img src="image/train img.png" alt="HabitFlow logo" class="nav-logo">
         HabitFlow
-      </div>
+      </a>
       <button id="mobile-menu-toggle" class="mobile-menu-toggle">☰</button>
       <ul class="nav-links">
         <li><a href="#" class="nav-link" data-page="index">Home</a></li>
-        <li><a href="#" class="nav-link" data-page="habit-categories">Habit Categories</a></li>
-        <li><a href="#" class="nav-link" data-page="daily-tracker">Daily Tracker</a></li>
+        <li><a href="#" class="nav-link active" data-page="habit-categories">Habits</a></li>
         <li><a href="#" class="nav-link" data-page="progress">Progress</a></li>
-        <li><a href="#" class="nav-link" data-page="customize">Customize Habits</a></li>
+        <li><a href="#" class="nav-link" data-page="customize">Customize</a></li>
       </ul>
     </div>
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="mobile-menu hidden">
+    <div id="mobile-menu" class="mobile-menu">
       <ul class="mobile-nav-links">
         <li><a href="#" class="nav-link" data-page="index">Home</a></li>
-        <li><a href="#" class="nav-link" data-page="habit-categories">Habit Categories</a></li>
-        <li><a href="#" class="nav-link" data-page="daily-tracker">Daily Tracker</a></li>
+        <li><a href="#" class="nav-link active" data-page="habit-categories">Habits</a></li>
         <li><a href="#" class="nav-link" data-page="progress">Progress</a></li>
-        <li><a href="#" class="nav-link" data-page="customize">Customize Habits</a></li>
+        <li><a href="#" class="nav-link" data-page="customize">Customize</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- Main Content -->
-  <main class="main-content">
-    <div class="container">
-      <h1 style="text-align: center; margin-bottom: 2rem; font-size: 2.5rem; color: var(--primary-purple);">Choose Your Habits</h1>
-      
-      <div id="habits-container" class="habits-grid">
-        <!-- Habits will be loaded here -->
+  <main class="page-shell">
+    <section class="category-panel anim-fade-up delay-1">
+      <div class="page-topbar">
+        <div>
+          <h2>Curated Habit Categories</h2>
+          <p>Choose focus areas like fitness, mindfulness, learning, and wellness to build a balanced routine.</p>
+        </div>
       </div>
-    </div>
+      <div id="habits-container" class="category-grid"></div>
+    </section>
   </main>
 
-  <!-- Floating Shapes -->
-  <div class="floating-shapes">
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-  </div>
-
-  <!-- Scripts -->
   <script src="habits-data.js"></script>
-  <script src="confetti.js"></script>
-  <script src="chatbot.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

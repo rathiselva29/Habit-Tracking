@@ -1,70 +1,68 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Daily Tracker — HabitFlow</title>
-  <meta name="description" content="Track and complete your daily habits with HabitFlow. Build streaks, earn badges, and stay motivated.">
-  <link rel="icon" href="image/train img.png" type="image/png">
+  <meta name="description" content="Track your daily habits, view streaks, and complete rituals with HabitFlow.">
   <link rel="stylesheet" href="style.css">
+  <meta name="theme-color" content="#4F46E5">
 </head>
-<body>
-  <!-- Navigation -->
+<body class="page-daily">
   <nav class="navbar">
     <div class="nav-container">
-      <div class="nav-brand">
+      <a href="index.html" class="nav-brand">
         <img src="image/train img.png" alt="HabitFlow logo" class="nav-logo">
         HabitFlow
-      </div>
+      </a>
       <button id="mobile-menu-toggle" class="mobile-menu-toggle">☰</button>
       <ul class="nav-links">
         <li><a href="#" class="nav-link" data-page="index">Home</a></li>
-        <li><a href="#" class="nav-link" data-page="habit-categories">Habit Categories</a></li>
-        <li><a href="#" class="nav-link" data-page="daily-tracker">Daily Tracker</a></li>
+        <li><a href="#" class="nav-link" data-page="habit-categories">Habits</a></li>
         <li><a href="#" class="nav-link" data-page="progress">Progress</a></li>
-        <li><a href="#" class="nav-link" data-page="customize">Customize Habits</a></li>
+        <li><a href="#" class="nav-link" data-page="customize">Customize</a></li>
       </ul>
     </div>
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="mobile-menu hidden">
+    <div id="mobile-menu" class="mobile-menu">
       <ul class="mobile-nav-links">
         <li><a href="#" class="nav-link" data-page="index">Home</a></li>
-        <li><a href="#" class="nav-link" data-page="habit-categories">Habit Categories</a></li>
-        <li><a href="#" class="nav-link" data-page="daily-tracker">Daily Tracker</a></li>
+        <li><a href="#" class="nav-link" data-page="habit-categories">Habits</a></li>
         <li><a href="#" class="nav-link" data-page="progress">Progress</a></li>
-        <li><a href="#" class="nav-link" data-page="customize">Customize Habits</a></li>
+        <li><a href="#" class="nav-link" data-page="customize">Customize</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- Main Content -->
-  <main class="main-content">
-    <div class="container">
-      <div class="streak-display">
-        <h2>🔥 Current Streak: <span id="current-streak">0</span> days</h2>
-        <p>Keep it up! Every day counts.</p>
+  <main class="page-shell">
+    <section class="daily-panel anim-fade-up delay-1">
+      <div class="page-topbar">
+        <div>
+          <h2>Today's Routine</h2>
+          <p>Complete your checklist, maintain your streak, and celebrate each win.</p>
+        </div>
       </div>
-      
-      <h1 style="text-align: center; margin-bottom: 2rem; font-size: 2.5rem; color: var(--primary-purple);">Today's Habits</h1>
-      
-      <div id="daily-habits-container">
-        <!-- Daily habits will be loaded here -->
+      <div class="stats-grid">
+        <article class="stat-card">
+          <h3>Current Streak</h3>
+          <div id="current-streak" class="stat-number">18</div>
+          <div class="stat-highlight">Days of progress</div>
+        </article>
+        <article class="stat-card">
+          <h3>Completed Today</h3>
+          <div id="today-completed" class="stat-number">0</div>
+          <div class="stat-highlight">Habits done</div>
+        </article>
+        <article class="stat-card">
+          <h3>Daily Score</h3>
+          <div id="today-score" class="stat-number">0%</div>
+          <div class="stat-highlight">Completion percentage</div>
+        </article>
       </div>
-    </div>
+      <div id="daily-habits-container" class="daily-grid"></div>
+    </section>
   </main>
 
-  <!-- Floating Shapes -->
-  <div class="floating-shapes">
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-  </div>
-
-  <!-- Scripts -->
   <script src="habits-data.js"></script>
-  <script src="confetti.js"></script>
-  <script src="chatbot.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

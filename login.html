@@ -1,86 +1,55 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login — HabitFlow</title>
-  <meta name="description" content="Login to HabitFlow to continue tracking your habits, earning badges, and viewing progress analytics.">
-  <link rel="icon" href="assets/icons/default.svg" type="image/svg+xml">
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#4CAF50">
+  <meta name="description" content="Login to HabitFlow to continue tracking your habits and routines.">
+  <link rel="icon" href="image/train img.png" type="image/png">
   <link rel="stylesheet" href="style.css">
+  <meta name="theme-color" content="#4F46E5">
 </head>
-<body>
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <div class="nav-brand">
-        <img src="image/train img.png" alt="HabitFlow logo" class="nav-logo">
-        HabitFlow
+<body class="page-login">
+  <main class="onboarding-shell">
+    <section class="auth-card">
+      <div class="auth-header">
+        <div>
+          <p class="eyebrow">Welcome back</p>
+          <h1>Sign in to HabitFlow</h1>
+          <p>One-step passwordless access to your habits, streaks, and daily motivation.</p>
+        </div>
       </div>
-      <button id="mobile-menu-toggle" class="mobile-menu-toggle">☰</button>
-      <ul class="nav-links">
-        <li><a href="#" class="nav-link" data-page="index">Home</a></li>
-        <li><a href="#" class="nav-link" data-page="habit-categories">Habit Categories</a></li>
-        <li><a href="#" class="nav-link" data-page="daily-tracker">Daily Tracker</a></li>
-        <li><a href="#" class="nav-link" data-page="progress">Progress</a></li>
-        <li><a href="#" class="nav-link" data-page="customize">Customize Habits</a></li>
-      </ul>
-    </div>
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="mobile-menu hidden">
-      <ul class="mobile-nav-links">
-        <li><a href="#" class="nav-link" data-page="index">Home</a></li>
-        <li><a href="#" class="nav-link" data-page="habit-categories">Habit Categories</a></li>
-        <li><a href="#" class="nav-link" data-page="daily-tracker">Daily Tracker</a></li>
-        <li><a href="#" class="nav-link" data-page="progress">Progress</a></li>
-        <li><a href="#" class="nav-link" data-page="customize">Customize Habits</a></li>
-      </ul>
-    </div>
-  </nav>
 
-  <!-- Main Content -->
-  <main class="main-content">
-    <div class="login-container">
-      <div class="login-card">
-        <h1 class="login-title">Daily Habit Tracking</h1>
-        <p class="login-subtitle">Track your daily habits and improve your life</p>
-        
-        <form id="login-form">
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" required>
+      <form id="login-form" class="auth-form">
+        <div class="form-floating">
+          <input type="email" id="email" placeholder="" required>
+          <label for="email">Email address</label>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="terms-checkbox">
+          <label for="terms-checkbox">I agree to receive sign-in links and reminders.</label>
+        </div>
+        <div id="otp-section" class="hidden">
+          <p id="otp-sent-message" class="form-note">Enter the code from your email.</p>
+          <div class="form-floating">
+            <input type="text" id="otp-code" placeholder="" inputmode="numeric" maxlength="6">
+            <label for="otp-code">One-time code</label>
           </div>
-          
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" required>
+          <div class="auth-actions">
+            <button type="button" id="verify-otp-btn" class="btn btn-primary">Verify code</button>
+            <button type="button" id="resend-otp-btn" class="btn btn-ghost">Resend code</button>
           </div>
-          
-          <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
-        </form>
+        </div>
+        <button type="submit" class="btn btn-primary">Send code</button>
+        <button type="button" id="google-signin" class="btn btn-secondary" style="width: 100%;">Continue with Google</button>
+      </form>
+
+      <div class="auth-copy" style="margin-top: 1.5rem;">
+        <p>Don’t have an account yet? Sign in to access premium habit coaching, streak reports, and smart reminders.</p>
       </div>
-    </div>
+    </section>
   </main>
 
-  <!-- Floating Shapes -->
-  <div class="floating-shapes">
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-  </div>
-
-  <!-- Scripts -->
-  <script>
-    // Check if user is already logged in
-    if (localStorage.getItem('userLoggedIn') === 'true') {
-      window.location.href = 'index.html';
-    }
-  </script>
-  <script src="habits-data.js"></script>
-  <script src="confetti.js"></script>
-  <script src="chatbot.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

@@ -84,6 +84,8 @@ This is a static website that can be deployed to any web hosting service or GitH
 2. Ensure the `assets/` folder is included
 3. Open `index.html` to start using the app
 
+> Developer note: If you are testing locally, do a hard refresh or clear the service worker cache. The app automatically unregisters the service worker on `localhost` and local file previews to ensure your file edits appear immediately.
+
 ## GitHub Pages
 
 To publish this project as a GitHub Pages site (no build step needed):
