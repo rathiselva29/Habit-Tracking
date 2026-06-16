@@ -127,6 +127,55 @@ function initScrollSnap() {
   document.body.classList.add('scroll-snap-root');
 }
 
+/* Animation helpers */
+function initAnimations() {
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal, .anim-fade-up, .anim-fade-scale, .anim-slide-left, .anim-pop').forEach(el => observer.observe(el));
+
+  // Hero parallax (subtle)
+  const hero = document.querySelector('.hero');
+  if (hero) {
+    hero.addEventListener('mousemove', (e) => {
+      const rect = hero.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      hero.style.transform = `translate3d(${x * 8}px, ${y * 6}px, 0)`;
+      hero.style.transition = 'transform 0.15s linear';
+    });
+    hero.addEventListener('mouseleave', () => { hero.style.transform = ''; });
+  }
+
+  // Button ripple
+  document.body.addEventListener('click', function (e) {
+    const btn = e.target.closest('.btn');
+    if (!btn) return;
+    let ripple = btn.querySelector('.ripple');
+    if (!ripple) {
+      ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      ripple.style.width = ripple.style.height = '120px';
+      btn.appendChild(ripple);
+    }
+    ripple.style.left = (e.offsetX - 60) + 'px';
+    ripple.style.top = (e.offsetY - 60) + 'px';
+    ripple.style.transform = 'scale(0)';
+    ripple.style.opacity = '0.9';
+    requestAnimationFrame(() => { ripple.style.transform = 'scale(1)'; ripple.style.opacity = '0'; });
+    setTimeout(() => { ripple.style.opacity = ''; }, 700);
+  }, { passive: true });
+
+  // Hero shimmer trigger
+  document.querySelectorAll('.shimmer').forEach(s => s.classList.add('animate'));
+}
+
 function initNavigation() {
   const navLinks = document.querySelectorAll('.nav-link');
   navLinks.forEach(link => {
@@ -556,6 +605,7 @@ function initApp() {
   requestNotificationPermission();
   registerPeriodicSync();
   initScrollSnap();
+  initAnimations();
   initDailyResetTimer();
   initDailyAlerts();
   initPage(currentPage);
